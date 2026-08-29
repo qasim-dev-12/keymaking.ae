@@ -60,4 +60,7 @@ Thumbs.db
 
 # PM2 logs
 logs/
-*.log.node/
+*.log
+
+# local node runtime
+.node/
