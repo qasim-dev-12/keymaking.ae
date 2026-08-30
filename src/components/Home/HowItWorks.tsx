@@ -23,27 +23,36 @@ const HowItWorks = () => {
           paragraph="Getting locked-out or key issues resolved in Dubai has never been this simple."
           center
         />
-        <div className="relative mx-auto max-w-lg">
-          <div className="absolute left-6 top-2 h-[calc(100%-1rem)] w-0.5 bg-primary/25 md:left-1/2 md:-translate-x-1/2" />
-          {steps.map((s, i) => (
-            <div
-              key={s.title}
-              style={{ animationDelay: `${i * 120}ms` }}
-              className="relative flex items-center gap-4 py-5 animate-[fadeInUp_0.5s_ease_both] md:gap-0 md:py-6"
-            >
-              <span
-                style={{ animationDelay: `${i * 250}ms` }}
-                className="relative z-10 flex h-12 w-12 shrink-0 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full border-4 border-gray-light bg-primary text-white shadow-lg transition-transform duration-300 hover:scale-110 dark:border-bg-color-dark md:absolute md:left-1/2 md:-translate-x-1/2"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">{icons[i]}</svg>
-              </span>
-              <div className={`flex-1 text-left md:w-1/2 ${i % 2 === 0 ? "md:pr-8 md:text-right" : "md:order-2 md:pl-8 md:text-left"}`}>
-                <h3 className="mb-1 text-base font-bold text-black dark:text-white">{s.title}</h3>
-                <p className="text-sm text-body-color dark:text-body-color-dark">{s.text}</p>
-              </div>
-              <div className={`hidden md:block md:w-1/2 ${i % 2 === 0 ? "" : "md:order-1"}`} />
+        <div className="-mx-4 flex flex-wrap-reverse items-center gap-y-10">
+          <div className="w-full px-4 lg:w-2/5">
+            <div className="overflow-hidden rounded-2xl shadow-one ring-1 ring-black/5 dark:ring-stroke-dark">
+              <img
+                src="/images/keymaking/brass-key-milling.jpeg"
+                alt="Precision milling of a brass car key"
+                className="h-full w-full object-cover"
+              />
             </div>
-          ))}
+          </div>
+          <div className="w-full px-4 lg:w-3/5">
+            {steps.map((s, i) => (
+              <div
+                key={s.title}
+                style={{ animationDelay: `${i * 120}ms` }}
+                className="flex items-start gap-4 py-4 animate-[fadeInUp_0.5s_ease_both]"
+              >
+                <span
+                  style={{ animationDelay: `${i * 250}ms` }}
+                  className="flex h-12 w-12 shrink-0 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform duration-300 hover:scale-110"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">{icons[i]}</svg>
+                </span>
+                <div className="flex-1 text-left">
+                  <h3 className="mb-1 text-base font-bold text-black dark:text-white">{s.title}</h3>
+                  <p className="text-sm text-body-color dark:text-body-color-dark">{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

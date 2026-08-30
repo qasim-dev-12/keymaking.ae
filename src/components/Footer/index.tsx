@@ -10,12 +10,12 @@ const Footer = () => {
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
                 <Link href="/" className="mb-8 inline-flex items-center gap-2">
-                  <img src="/images/logo/logo-new.png" alt="Battery Near Me" className="h-10 w-auto" />
+                  <img src="/images/logo/logo-new.png" alt="Keymaking Near Me" className="h-10 w-auto" />
                 </Link>
                 <p className="mb-4 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Battery Near Me is your one-stop battery shop in Dubai,
-                  specialising in on-the-spot automotive services, available
-                  24/7, 365 days a year.
+                  Keymaking Near Me is your one-stop locksmith and key making
+                  service in Dubai, specialising in on-the-spot car, home, and
+                  office key services, available 24/7, 365 days a year.
                 </p>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                   Building # 10 Sheikh Zayed Road - Dubai
@@ -102,23 +102,23 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Battery Near Me
+                  Keymaking Near Me
                 </h2>
                 <ul>
+                  <li>
+                    <Link
+                      href="/about"
+                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    >
+                      About Us
+                    </Link>
+                  </li>
                   <li>
                     <Link
                       href="/areas"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Areas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/warranty"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Warranty
                     </Link>
                   </li>
                   <li>
@@ -148,15 +148,16 @@ const Footer = () => {
                 </h2>
                 <ul>
                   {[
-                    { slug: "car-battery-replacement", label: "Car Battery Replacement" },
-                    { slug: "battery-diagnostics-jumpstart", label: "Battery Diagnostics & Jumpstart" },
-                    { slug: "tyre-replacement", label: "Tyre Replacement" },
-                    { slug: "tyre-repair", label: "Tyre Repair" },
-                    { slug: "flat-tyre-replacement", label: "Flat Tyre Replacement" },
-                    { slug: "flat-tyre-repair", label: "Flat Tyre Repair" },
-                    { slug: "roadside-assistance", label: "Roadside Assistance" },
-                    { slug: "car-towing-recovery", label: "Car Towing & Recovery" },
-                    { slug: "car-recovery-dubai", label: "Car Recovery Dubai" },
+                    { slug: "car-door-unlocking", label: "Car Door Unlocking" },
+                    { slug: "apartment-door-unlocking", label: "Apartment Door Unlocking" },
+                    { slug: "lock-replacement", label: "Lock Replacement" },
+                    { slug: "safe-box-unlocking", label: "Safe Box Unlocking" },
+                    { slug: "car-key-replacement", label: "Car Key Replacement" },
+                    { slug: "car-key-programming", label: "Car Key Programming" },
+                    { slug: "house-door-unlocking", label: "House Door Unlocking" },
+                    { slug: "padlock-key-cutting-replacement", label: "Padlock Key Cutting & Replacement" },
+                    { slug: "duplicate-key-cutting", label: "Duplicate Key Cutting" },
+                    { slug: "maintaining-repairing-locks", label: "Maintaining & Repairing Locks" },
                   ].map((s) => (
                     <li key={s.slug}>
                       <Link
@@ -171,33 +172,12 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Battery Brands
-                </h2>
-                <ul>
-                  {["amaron", "bosch", "varta", "acdelco", "energizer", "solite"].map(
-                    (slug) => (
-                      <li key={slug}>
-                        <Link
-                          href={`/battery-brands/${slug}`}
-                          className="mb-4 inline-block text-base text-body-color capitalize duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                        >
-                          {slug.replace("-", " ")} Battery
-                        </Link>
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-            </div>
           </div>
 
           <div className="h-px w-full bg-linear-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-white">
-              © {new Date().getFullYear()} Battery Near Me. All rights reserved. Genuine batteries, 24/7 doorstep delivery across the UAE.
+              © {new Date().getFullYear()} Keymaking Near Me. All rights reserved. Trusted locksmith & key making services, 24/7 across the UAE.
             </p>
           </div>
         </div>
