@@ -1,16 +1,35 @@
-const EmergencyCTA = () => {
+import Image from "next/image";
+
+const EmergencyCTA = ({
+  label = "Emergency Service",
+  title = "Locked Out? Get Immediate Assistance!",
+  description = "Don't worry if you're locked out! We provide fast and reliable locksmith services anytime, anywhere in Dubai.",
+  supportingText,
+  image,
+}: {
+  label?: string;
+  title?: string;
+  description?: string;
+  supportingText?: string;
+  image?: string;
+}) => {
   return (
-    <section className="bg-gray-dark py-10 text-center md:py-20">
-      <div className="container">
+    <section className="relative overflow-hidden bg-gray-dark py-10 text-center md:py-20">
+      {image && (
+        <>
+          <Image src={image} alt={title} fill className="object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gray-dark/80" />
+        </>
+      )}
+      <div className="container relative">
         <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-wide text-primary">
-          Emergency Service
+          {label}
         </span>
         <h2 className="mx-auto mb-4 max-w-[700px] text-2xl font-bold text-white sm:text-3xl">
-          Locked Out? Get Immediate Assistance!
+          {title}
         </h2>
         <p className="mx-auto mb-8 max-w-[600px] text-base text-white/70">
-          Don&apos;t worry if you&apos;re locked out! We provide fast and
-          reliable locksmith services anytime, anywhere in Dubai.
+          {description}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
@@ -30,6 +49,9 @@ const EmergencyCTA = () => {
             WhatsApp Us
           </a>
         </div>
+        {supportingText && (
+          <p className="mx-auto mt-6 max-w-[600px] text-sm text-white/70">{supportingText}</p>
+        )}
         <p className="mx-auto mt-8 max-w-[600px] text-xs text-white/50">
           <strong className="text-white/70">Note:</strong> Kindly note that
           once our technician has been dispatched and arrives at your

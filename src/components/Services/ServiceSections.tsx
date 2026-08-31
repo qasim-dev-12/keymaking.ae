@@ -134,6 +134,13 @@ export const CostFactorIcon = ({ name }: { name: string }) => (
   </svg>
 );
 
+/** Full-width rounded photo banner used above a section's content when a supporting image is supplied. */
+export const SectionBanner = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="relative mb-10 h-64 w-full overflow-hidden rounded-lg shadow-one sm:h-80">
+    <Image src={src} alt={alt} fill className="object-cover" />
+  </div>
+);
+
 /** Left-accent-border card list (e.g. included features / additional services). */
 export const BorderList = ({ items }: { items: string[] }) => (
   <div className="mx-auto max-w-[700px] space-y-3">

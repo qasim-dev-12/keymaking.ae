@@ -5,16 +5,31 @@ import FAQAccordion from "@/components/Common/FAQAccordion";
 import EmergencyCTA from "@/components/Home/EmergencyCTA";
 import BrandsShowcase from "@/components/Home/BrandsShowcase";
 import AreasCovered from "@/components/Home/AreasCovered";
-import { BrandImage, Section, SplitContent, PrimaryButton, DotList, CheckGrid, BorderList, CostFactorIcon } from "@/components/Services/ServiceSections";
+import { BrandImage, Section, SplitContent, PrimaryButton, DotList, CheckGrid, BorderList, CostFactorIcon, SectionBanner } from "@/components/Services/ServiceSections";
 import services from "@/data/services";
 import batteryBrands from "@/data/batteryBrands";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 const PHONE = "+971543798989";
 const WHATSAPP = "https://wa.me/971543798989";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
+  if (!service) return {};
+  return {
+    title: service.metaTitle ?? service.title,
+    description: service.metaDescription ?? service.description,
+  };
 }
 
 const ServicePage = async ({
@@ -82,6 +97,22 @@ const ServicePage = async ({
         </div>
       </section>
 
+      {/* Trust / quick CTA bar */}
+      {service.trustBar && (
+        <section className="border-b border-body-color/10 bg-primary/5 py-6">
+          <div className="container">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {service.trustBar.map((item) => (
+                <div key={item} className="flex items-center justify-center gap-2 text-center text-sm font-semibold text-black dark:text-white">
+                  <span className="text-primary">✓</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Lead intro */}
       {service.introSection && (
         <Section title={service.introSection.title} paragraph={service.introSection.paragraph} />
@@ -119,12 +150,14 @@ const ServicePage = async ({
         )}
 
         <div className="mb-16">
-          <SectionTitle title="What's Included" paragraph="" mb="40px" center />
+          <SectionTitle title={service.featuresTitle ?? "What's Included"} paragraph={service.featuresIntro ?? ""} mb="40px" center />
+          {service.featuresImage && <SectionBanner src={service.featuresImage} alt={service.featuresTitle ?? "What's Included"} />}
           <BorderList items={service.features} />
         </div>
 
         <div>
-          <SectionTitle title="How It Works" paragraph="" mb="40px" center />
+          <SectionTitle title={service.stepsTitle ?? "How It Works"} paragraph={service.stepsIntro ?? ""} mb="40px" center />
+          {service.stepsImage && <SectionBanner src={service.stepsImage} alt={service.stepsTitle ?? "How It Works"} />}
           <div className="relative flex flex-wrap justify-center gap-6">
             {service.steps.map((step, index) => (
               <div
@@ -151,8 +184,14 @@ const ServicePage = async ({
                 className="overflow-hidden rounded-lg bg-white text-center shadow-one transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-dark dark:shadow-three"
               >
                 <div className="relative h-40 w-full bg-primary/5">
-                  <Image src="/images/about/about-image.png" alt={item.title} fill className="object-cover dark:hidden" />
-                  <Image src="/images/about/about-image.png" alt={item.title} fill className="hidden object-cover dark:block" />
+                  {item.image ? (
+                    <Image src={item.image} alt={item.title} fill className="object-cover" />
+                  ) : (
+                    <>
+                      <Image src="/images/about/about-image.png" alt={item.title} fill className="object-cover dark:hidden" />
+                      <Image src="/images/about/about-image.png" alt={item.title} fill className="hidden object-cover dark:block" />
+                    </>
+                  )}
                 </div>
                 <div className="p-6">
                   <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
@@ -254,7 +293,8 @@ const ServicePage = async ({
       )}
 
       {/* Other services — flip cards */}
-      <Section className="bg-gray-light py-10 md:py-16 dark:bg-bg-color-dark" title="Our Other Services" paragraph="Hover a service to see what it covers.">
+      <Section className="bg-gray-light py-10 md:py-16 dark:bg-bg-color-dark" title={service.otherServicesTitle ?? "Our Other Services"} paragraph={service.otherServicesSubheading ?? "Hover a service to see what it covers."}>
+        {service.otherServicesImage && <SectionBanner src={service.otherServicesImage} alt={service.otherServicesTitle ?? "Our Other Services"} />}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services
             .filter((s) => s.slug !== service.slug)
@@ -277,26 +317,43 @@ const ServicePage = async ({
         </div>
       </Section>
 
-      {/* Battery brands */}
-      <Section title="Car Batteries We Offer in Dubai" paragraph="Genuine, warrantied batteries from the brands UAE drivers trust.">
-        <div className="flex flex-wrap justify-center gap-8">
-          {batteryBrands.map((brand) => (
-            <div
-              key={brand.slug}
-              className="flex w-full flex-col rounded-lg bg-white p-6 text-center shadow-one transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-dark dark:shadow-three sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
-            >
-              <h3 className="mb-3 text-lg font-bold text-black dark:text-white">{brand.title}</h3>
-              <p className="mb-5 flex-1 text-sm text-body-color">{brand.description}</p>
-              <Link
-                href={`/battery-brands/${brand.slug}`}
-                className="inline-block rounded-xs bg-primary px-5 py-2 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+      {/* Automotive assistance */}
+      {service.relatedAutomotive ? (
+        <Section title={service.relatedAutomotive.title} paragraph={service.relatedAutomotive.subheading}>
+          {service.relatedAutomotive.image && <SectionBanner src={service.relatedAutomotive.image} alt={service.relatedAutomotive.title} />}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {service.relatedAutomotive.items.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-lg bg-white p-6 text-center shadow-one transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-dark dark:shadow-three"
               >
-                Read More
-              </Link>
-            </div>
-          ))}
-        </div>
-      </Section>
+                <h3 className="mb-2 text-lg font-bold text-black dark:text-white">{item.title}</h3>
+                <p className="text-sm text-body-color">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      ) : (
+        <Section title="Car Batteries We Offer in Dubai" paragraph="Genuine, warrantied batteries from the brands UAE drivers trust.">
+          <div className="flex flex-wrap justify-center gap-8">
+            {batteryBrands.map((brand) => (
+              <div
+                key={brand.slug}
+                className="flex w-full flex-col rounded-lg bg-white p-6 text-center shadow-one transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-dark dark:shadow-three sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
+              >
+                <h3 className="mb-3 text-lg font-bold text-black dark:text-white">{brand.title}</h3>
+                <p className="mb-5 flex-1 text-sm text-body-color">{brand.description}</p>
+                <Link
+                  href={`/battery-brands/${brand.slug}`}
+                  className="inline-block rounded-xs bg-primary px-5 py-2 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                >
+                  Read More
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* What affects the price */}
       {service.costFactorsDetailed ? (
@@ -404,7 +461,7 @@ const ServicePage = async ({
         <FAQAccordion faqs={service.faqs} />
       </Section>
 
-      <EmergencyCTA />
+      <EmergencyCTA {...service.emergencyCTA} />
     </>
   );
 };
