@@ -38,9 +38,13 @@ const PrecisionKeyCutting = () => {
               first time.
             </p>
             <div className="space-y-3">
-              {points.map((point) => (
-                <div key={point} className="flex items-center gap-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30">
+              {points.map((point, i) => (
+                <div
+                  key={point}
+                  style={{ animationDelay: `${i * 100}ms` }}
+                  className="flex items-center gap-3 animate-[fadeInUp_0.5s_ease_both]"
+                >
+                  <span className="flex h-7 w-7 shrink-0 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30">
                     <CheckIcon />
                   </span>
                   <p className="text-sm font-medium text-body-color dark:text-body-color-dark">

@@ -42,12 +42,15 @@ const CarKeyBrands = () => {
               location in Dubai.
             </p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {brands.map((brand) => (
+              {brands.map((brand, i) => (
                 <div
                   key={brand}
-                  className="flex items-center gap-2 rounded-xl bg-gray-light px-3 py-2 text-sm font-medium text-body-color dark:bg-bg-color-dark"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                  className="flex items-center gap-2 rounded-xl bg-gray-light px-3 py-2 text-sm font-medium text-body-color animate-[fadeInUp_0.5s_ease_both] transition-transform duration-300 hover:-translate-y-1 dark:bg-bg-color-dark"
                 >
-                  <CheckIcon />
+                  <span className="flex animate-[float_3s_ease-in-out_infinite] items-center justify-center">
+                    <CheckIcon />
+                  </span>
                   {brand}
                 </div>
               ))}

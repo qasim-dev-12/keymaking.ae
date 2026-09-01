@@ -40,7 +40,7 @@ const BulletSection = ({ eyebrow, title, intro, bullets, reverse }: BulletSectio
                   style={{ animationDelay: `${i * 100}ms` }}
                   className="group flex items-start gap-4 rounded-2xl bg-dark p-5 ring-1 ring-stroke-dark transition-all duration-300 hover:-translate-y-1 hover:ring-primary hover:shadow-[0_8px_30px_rgba(52,235,229,0.12)] animate-[fadeInUp_0.5s_ease_both]"
                 >
-                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30 transition-colors duration-300 group-hover:bg-primary/20">
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30 transition-colors duration-300 group-hover:bg-primary/20">
                     <CheckIcon />
                   </span>
                   <p className="text-sm font-medium leading-relaxed text-body-color-dark group-hover:text-white transition-colors duration-300">

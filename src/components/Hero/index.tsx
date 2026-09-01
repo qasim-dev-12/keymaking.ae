@@ -74,20 +74,20 @@ const Hero = () => {
             {/* Yellow card */}
             <div className="w-full px-4">
               <div className="mx-auto max-w-2xl rounded-3xl bg-dark px-6 py-8 ring-1 ring-stroke-dark shadow-[0_8px_40px_rgba(52,235,229,0.12)] transition-shadow duration-700 hover:shadow-[0_8px_50px_rgba(52,235,229,0.22)] md:px-14 md:py-14">
-                <h2 className="mb-4 text-xl font-bold leading-tight text-white sm:text-3xl">
+                <h2 className="mb-4 text-center text-xl font-bold leading-tight text-white sm:text-left sm:text-3xl">
                   <span style={{fontSize:"16px"}} className="sm:hidden text-primary">24/7 Emergency Assistance</span>
                   <span className="hidden sm:inline">24/7 Emergency Key & Lock <span className="text-primary">Assistance</span> at Your Service</span>
                 </h2>
-                <ul className="mb-5 space-y-3">
+                <ul className="mx-auto mb-5 w-fit space-y-3 sm:mx-0 sm:w-full">
                   {bullets.map((b, i) => (
-                    <li key={b.text} className="flex items-center gap-3 text-base font-medium text-white">
+                    <li key={b.text} className="flex items-center gap-4 text-base font-medium text-white">
                       <span
                         style={{ animationDelay: `${i * 200}ms` }}
                         className={`flex h-8 w-8 shrink-0 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full sm:h-10 sm:w-10 ${b.bg}`}
                       >
                         {b.icon}
                       </span>
-                      <span className="sm:hidden text-sm">{b.short}</span>
+                      <span className="sm:hidden text-lg font-semibold">{b.short}</span>
                       <span className="hidden sm:inline">{b.text}</span>
                     </li>
                   ))}

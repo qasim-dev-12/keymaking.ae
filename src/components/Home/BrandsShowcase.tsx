@@ -51,7 +51,7 @@ const BrandsShowcase = () => {
               style={{ animationDelay: `${i * 100}ms` }}
               className="group flex flex-col items-center gap-4 rounded-2xl bg-dark p-6 text-center ring-1 ring-stroke-dark transition-all duration-300 hover:-translate-y-2 hover:ring-primary hover:shadow-[0_12px_40px_rgba(52,235,229,0.15)] animate-[fadeInUp_0.5s_ease_both]"
             >
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30 transition-colors duration-300 group-hover:bg-primary/20">
+              <span className="flex h-16 w-16 animate-[float_3s_ease-in-out_infinite] items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/30 transition-colors duration-300 group-hover:bg-primary/20">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary">
                   {type.icon}
                 </svg>
