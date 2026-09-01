@@ -89,13 +89,13 @@ const Header = () => {
                       : "invisible top-[120%] opacity-0"
                   }`}
                 >
-                  <ul className="block xl:flex xl:space-x-6">
+                  <ul className="block xl:flex xl:items-center xl:space-x-4">
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
-                            className={`flex py-2 text-base xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${
+                            className={`flex py-2 text-base whitespace-nowrap xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 xl:text-sm ${
                               usePathName === menuItem.path
                                 ? "text-primary dark:text-white"
                                 : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
@@ -107,7 +107,7 @@ const Header = () => {
                           <>
                             <p
                               onClick={() => handleSubmenu(index)}
-                              className="text-dark group-hover:text-primary flex cursor-pointer items-center justify-between py-2 text-base whitespace-nowrap xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 dark:text-white/70 dark:group-hover:text-white"
+                              className="text-dark group-hover:text-primary flex cursor-pointer items-center justify-between py-2 text-base whitespace-nowrap xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 xl:text-sm dark:text-white/70 dark:group-hover:text-white"
                             >
                               {menuItem.title}
                               <span className="pl-3">
