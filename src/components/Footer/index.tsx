@@ -121,6 +121,30 @@ const Footer = () => {
                       About Us
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/services/car-door-unlocking"
+                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    >
+                      Car Door Unlocking
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/car-key-replacement"
+                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    >
+                      Car Key Replacement
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/services/car-key-programming"
+                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    >
+                      Car Key Programming
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

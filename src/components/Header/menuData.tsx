@@ -14,6 +14,24 @@ const menuData: Menu[] = [
     newTab: false,
   },
   {
+    id: 3,
+    title: "Car Door Unlocking",
+    path: "/services/car-door-unlocking",
+    newTab: false,
+  },
+  {
+    id: 4,
+    title: "Car Key Replacement",
+    path: "/services/car-key-replacement",
+    newTab: false,
+  },
+  {
+    id: 5,
+    title: "Car Key Programming",
+    path: "/services/car-key-programming",
+    newTab: false,
+  },
+  {
     id: 51,
     title: "Services",
     newTab: false,
@@ -79,12 +97,6 @@ const menuData: Menu[] = [
         newTab: false,
       },
     ],
-  },
-  {
-    id: 53,
-    title: "Contact Us",
-    path: "/contact",
-    newTab: false,
   },
 ];
 export default menuData;
