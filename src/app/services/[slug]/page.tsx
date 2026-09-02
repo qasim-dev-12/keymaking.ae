@@ -11,8 +11,8 @@ import batteryBrands from "@/data/batteryBrands";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-const PHONE = "+971543798989";
-const WHATSAPP = "https://wa.me/971543798989";
+const PHONE = "+971559685663";
+const WHATSAPP = "https://wa.me/971559685663";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));

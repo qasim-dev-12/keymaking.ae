@@ -32,7 +32,7 @@ const AreasCovered = () => {
             DISCOVER MORE
           </Link>
           <a
-            href="https://wa.me/971543798989"
+            href="https://wa.me/971559685663"
             target="_blank"
             rel="noopener noreferrer"
             className="custom-btn whatsapp-btn wobble-btn"

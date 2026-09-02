@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Warranty terms for batteries fitted by Battery Near Me.",
 };
 
-const PHONE = "+971543798989";
-const WHATSAPP = "https://wa.me/971543798989";
+const PHONE = "+971559685663";
+const WHATSAPP = "https://wa.me/971559685663";
 
 const warrantyLengths = [
   { value: "3", label: "Months Warranty" },
